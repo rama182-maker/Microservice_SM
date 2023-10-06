@@ -1,0 +1,38 @@
+create table users (
+    id serial primary key,
+    email varchar(32),
+    password varchar(128),
+    username varchar(16)
+);
+
+create table posts (
+    id serial primary key,
+    title varchar(64),
+    description text,
+    author int references users(id),
+    likes int default 0
+);
+
+create table communitys (
+    id serial primary key,
+    name varchar(32),
+    description varchar(64)
+);
+
+create table community_users (
+    community_id integer references communitys(id),
+    user_id integer references users(id)
+);
+
+create table comments (
+    id serial primary key,
+    post_id int references posts(id),
+    comment varchar(256),
+    user_id int references users(id)
+);
+
+
+
+
+
+

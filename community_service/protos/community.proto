@@ -1,0 +1,30 @@
+syntax = 'proto3';
+
+message Community {
+    string name = 1;
+    string description = 2;
+    int32 author = 3;
+    int32 id = 4;
+}
+
+message CreateCommunityRequest {
+    Community community = 1;
+}
+
+message CreateCommunityResponse {
+    int32 id = 1;
+}
+
+message GetCommunityRequest {
+    int32 id = 1;
+}
+
+message GetCommunityResponse {
+    Community community = 1;
+}
+
+
+service CommunityService {
+    rpc CreateCommunity(CreateCommunityRequest) returns (CreateCommunityResponse) {};
+    rpc GetCommunity(GetCommunityRequest) returns (GetCommunityResponse) {};
+}
